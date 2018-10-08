@@ -1,0 +1,33 @@
+#
+# ~/.scripts/.aliases
+#
+
+# aliases 
+alias dd='dd status=progress bs=10M' 
+alias ll="ls -la" 
+ 
+# add to path scripts dir 
+export PATH=$PATH:$HOME/.scripts 
+#Allows you to cd into directory merely by typing the directory name. 
+shopt -s autocd  
+ # Infinite history. 
+HISTSIZE= HISTFILESIZE= 
+ 
+alias progs="(pacman -Qet && pacman -Qm) | sort -u" # List programs I've installed 
+alias p="sudo pacman" 
+alias SS="sudo systemctl" 
+alias v="vim" 
+alias sv="sudo vim" 
+alias ka="killall" 
+alias g="git" 
+alias mkd="mkdir -pv" 
+alias ref="shortcuts.sh && source ~/.bashrc" # Refresh shortcuts manually and reload bashrc 
+ 
+# Internet 
+alias ytd="youtube-dl --add-metadata -ic" # Download video link 
+alias ytda="youtube-dl --add-metadata -xic" # Download only audio 
+alias ytv="youtube-viewer" 
+ 
+# Development 
+alias intellij="idea"
+
