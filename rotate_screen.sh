@@ -8,18 +8,21 @@
 # find your Touchscreen and Touchpad device with `xinput`
 TouchscreenDevice='ELAN Touchscreen'
 TouchpadDevice='ELAN0501:00 04F3:3037 Touchpad'
+KeyboardDevice='AT Translated Set 2 keyboard'
 
-if [ "$1" = "--help"  ] || [ "$1" = "-h"  ] ; then
-echo 'Usage: rotate-screen.sh [OPTION]'
-echo
-echo 'This script rotates the screen and touchscreen input 90 degrees each time it is called,' 
-echo 'also disables the touchpad, and enables the virtual keyboard accordingly'
-echo
-echo Usage:
-echo ' -h --help display this help'
-echo ' -j (just horizontal) rotates the screen and touchscreen input only 180 degrees'
-echo ' -n always rotates the screen back to normal'
-exit 0
+if [ "$1" = "--help"  ] || [ "$1" = "-h"  ] || [ -z "$1" ]; then
+    echo 'Usage: rotate-screen.sh [OPTION]'
+    echo
+    echo 'This script rotates the screen and touchscreen input 90 degrees each time it is called,'
+    echo 'also disables the touchpad, and enables the virtual keyboard accordingly'
+    echo
+    echo Usage:
+    echo ' -h --help display this help'
+    echo ' -l rotates the screen +90°'
+    echo ' -r rotates the screen -90°'
+    echo ' -u rotates the screen 180°'
+    echo ' -n rotates the screen back to normal'
+    exit 0
 fi
 
 touchpadEnabled=$(xinput --list-props "$TouchpadDevice" | awk '/Device Enabled/{print $NF}')
@@ -51,26 +54,37 @@ left_float='0.000000,-1.000000,1.000000,1.000000,0.000000,0.000000,0.000000,0.00
 #⎣  0 0 1 ⎦
 right='0 1 0 -1 0 1 0 0 1'
 
-if [ $screenMatrix == $normal_float ] && [ "$1" != "-n" ]
+if [ "$1" != "-n" ]
+then
+    echo "Disabling touchpad and keyboard"
+    xinput disable "$TouchpadDevice"
+    xinput disable "$KeyboardDevice"
+else
+    echo "Enabling touchpad and keyboard"
+    xinput enable "$KeyboardDevice"
+    xinput enable "$TouchpadDevice"
+    xinput --set-prop "ELAN0501:00 04F3:3037 Touchpad" "libinput Accel Speed" 0.3
+fi
+
+if [ "$1" == "-u" ]
 then
   echo "Upside down"
   xrandr -o inverted
   xinput set-prop "$TouchscreenDevice" 'Coordinate Transformation Matrix' $inverted
   xinput disable "$TouchpadDevice"
-  
-elif [ $screenMatrix == $inverted_float ] && [ "$1" != "-j" ] && [ "$1" != "-n" ]
+elif [ "$1" == "-l" ]
 then
   echo "90° to the left"
   xrandr -o left
   xinput set-prop "$TouchscreenDevice" 'Coordinate Transformation Matrix' $left
   xinput disable "$TouchpadDevice"
-elif [ $screenMatrix == $left_float ] && [ "$1" != "-j" ] && [ "$1" != "-n" ]
+elif [ "$1" == "-r" ]
 then
   echo "90° to the right"
   xrandr -o right
   xinput set-prop "$TouchscreenDevice" 'Coordinate Transformation Matrix' $right
-  xinput disable "$TouchpadDevice"
-else
+elif [ "$1" == "-n" ]
+then
   echo "Back to normal"
   xrandr -o normal
   xinput set-prop "$TouchscreenDevice" 'Coordinate Transformation Matrix' $normal
