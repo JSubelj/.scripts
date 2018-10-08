@@ -4,6 +4,14 @@
 # ~/.scripts/.bashrc_ext 
 #
 
+# add to path scripts dir 
+export PATH=$PATH:$HOME/.scripts
+#Allows you to cd into directory merely by typing the directory name. 
+shopt -s autocd
+# Infinite history. 
+HISTSIZE= HISTFILESIZE=
+
+
 # NTFS colors dont show
 LS_COLORS="$LS_COLORS:ow="; export LS_COLORS
 
