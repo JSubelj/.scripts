@@ -1,0 +1,12 @@
+# 
+# Extended bashrc
+# 
+# ~/.scripts/.bashrc_ext 
+#
+
+# NTFS colors dont show
+LS_COLORS="$LS_COLORS:ow="; export LS_COLORS
+
+# aliases
+. ~/.scripts/.aliases
+
