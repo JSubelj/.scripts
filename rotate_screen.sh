@@ -54,30 +54,29 @@ left_float='0.000000,-1.000000,1.000000,1.000000,0.000000,0.000000,0.000000,0.00
 #⎣  0 0 1 ⎦
 right='0 1 0 -1 0 1 0 0 1'
 
-if [ "$1" != "-n" ]
-then
-    echo "Disabling touchpad and keyboard"
-    xinput disable "$TouchpadDevice"
-    xinput disable "$KeyboardDevice"
-else
-    echo "Enabling touchpad and keyboard"
-    xinput enable "$KeyboardDevice"
-    xinput enable "$TouchpadDevice"
-    xinput --set-prop "ELAN0501:00 04F3:3037 Touchpad" "libinput Accel Speed" 0.3
-fi
+# No need because Acer Spin 3 disables keyboard and touchpand in hardware no need for software
+# if [ "$1" != "-n" ]
+# then
+#     echo "Disabling touchpad and keyboard"
+#     xinput disable "$TouchpadDevice"
+#     xinput disable "$KeyboardDevice"
+# else
+#     echo "Enabling touchpad and keyboard"
+#     xinput enable "$KeyboardDevice"
+#     xinput enable "$TouchpadDevice"
+#     xinput --set-prop "ELAN0501:00 04F3:3037 Touchpad" "libinput Accel Speed" 0.3
+# fi
 
 if [ "$1" == "-u" ]
 then
   echo "Upside down"
   xrandr -o inverted
   xinput set-prop "$TouchscreenDevice" 'Coordinate Transformation Matrix' $inverted
-  xinput disable "$TouchpadDevice"
 elif [ "$1" == "-l" ]
 then
   echo "90° to the left"
   xrandr -o left
   xinput set-prop "$TouchscreenDevice" 'Coordinate Transformation Matrix' $left
-  xinput disable "$TouchpadDevice"
 elif [ "$1" == "-r" ]
 then
   echo "90° to the right"
@@ -88,5 +87,4 @@ then
   echo "Back to normal"
   xrandr -o normal
   xinput set-prop "$TouchscreenDevice" 'Coordinate Transformation Matrix' $normal
-  xinput enable "$TouchpadDevice"
 fi
