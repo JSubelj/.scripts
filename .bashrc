@@ -141,13 +141,9 @@ ex ()
 # better yaourt colors
 export YAOURT_COLORS="nb=1:pkg=1:ver=1;32:lver=1;45:installed=1;42:grp=1;34:od=1;41;5:votes=1;44:dsc=0:other=1;35"
 
-
-# NTFS colors dont show
-LS_COLORS="$LS_COLORS:ow="; export LS_COLORS
-
-if [ ! -f ~/.scripts/.aliases ]
+if [ ! -f ~/.scripts/.bashrc_ext ]
 then
 	git clone https://github.com/JSubelj/.scripts.git ~/.scripts
 fi
 
-. ~/.scripts/.aliases
+. ~/.scripts/.bashrc_ext
