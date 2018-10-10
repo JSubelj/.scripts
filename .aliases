@@ -25,3 +25,6 @@ alias ytv="youtube-viewer"
 # Development 
 alias intellij="idea"
 alias mvnb="mvn -B archetype:generate -DarchetypeGroupId=org.apache.maven.archetypes"
+
+# Intercomputer chat
+alias chat="vim ~/Share/messages.txt"

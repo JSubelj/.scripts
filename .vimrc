@@ -1,2 +1,1 @@
-vnoremap <C-S-c> "*y
-syntax on
+so ~/.scripts/.vimrc_ext

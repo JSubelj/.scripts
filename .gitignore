@@ -1,2 +1,4 @@
 secrets
 .idea/
+.owncloud*
+._sync_*
