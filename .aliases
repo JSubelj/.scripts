@@ -27,4 +27,5 @@ alias intellij="idea"
 alias mvnb="mvn -B archetype:generate -DarchetypeGroupId=org.apache.maven.archetypes"
 
 # Intercomputer chat
-alias chat="vim ~/Share/messages.txt"
+alias chat='vim "+normal G$" +startinsert ~/Share/messages.txt'
+alias share='function __share(){ if [ -z $1 ]; then cd ~/Share/drop/; else cp $1 ~/Share/drop; echo "Share folder:" ;ll ~/Share/drop; fi };__share' 
