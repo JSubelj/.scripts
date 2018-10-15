@@ -39,7 +39,8 @@ if ${use_color} ; then
                 PS1='\[\033[01;31m\][\h\[\033[01;36m\] \W\[\033[01;31m\]]\$\[\033[00m\] '
         else
 		# dis the line to edit
-                PS1="$YELLOW/\A/ $LIGHT_GREEN[\u@\h$WHITE \W$LIGHT_GREEN]\$$COLOR_NONE "
+		PROMPT_START="$YELLOW/\A/ $LIGHT_GREEN/\u@\h$WHITE \W$LIGHT_GREEN/"
+                PS1="$PROMPT_START\$$COLOR_NONE "
         fi
 
         alias ls='ls --color=auto'
@@ -57,3 +58,9 @@ fi
 
 unset use_color safe_term match_lhs sh
 
+# GIT prompt
+
+GIT_PROMPT_ONLY_IN_REPO=1
+GIT_PROMPT_START="$PROMPT_START$COLOR_NONE"
+GIT_PROMPT_END="$ "
+. ~/.scripts/bash-git-prompt/gitprompt.sh

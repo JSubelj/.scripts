@@ -17,6 +17,4 @@ LS_COLORS="$LS_COLORS:ow="; export LS_COLORS
 
 # aliases
 . ~/.scripts/.aliases
-GIT_PROMPT_ONLY_IN_REPO=1
-. ~/.scripts/bash-git-prompt/gitprompt.sh
 . ~/.scripts/.bash_prompt
