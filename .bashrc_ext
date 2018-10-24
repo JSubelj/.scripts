@@ -18,3 +18,4 @@ LS_COLORS="$LS_COLORS:ow="; export LS_COLORS
 # aliases
 . ~/.scripts/.aliases
 . ~/.scripts/.bash_prompt
+. ~/.scripts/.git_autocomplete.sh
