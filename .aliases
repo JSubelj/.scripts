@@ -26,7 +26,7 @@ alias chrome="google-chrome-stable > /dev/null 2>&1 &"
 # Development 
 alias intellij="idea"
 alias mvnb="mvn -B archetype:generate -DarchetypeGroupId=org.apache.maven.archetypes"
-alias prog="cd /home/cleptes/HDD_Documents/programming"
+alias prog="cd /home/cleptes/Programming"
 
 # Intercomputer chat
 alias chat='vim "+normal G$" +startinsert ~/Share/messages.txt'
