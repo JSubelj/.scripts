@@ -21,6 +21,7 @@ alias ref="shortcuts.sh && source ~/.bashrc" # Refresh shortcuts manually and re
 alias ytd="youtube-dl --add-metadata -ic" # Download video link 
 alias ytda="youtube-dl --add-metadata -xic" # Download only audio 
 alias ytv="youtube-viewer" 
+alias chrome="google-chrome-stable > /dev/null 2>&1 &"
  
 # Development 
 alias intellij="idea"
