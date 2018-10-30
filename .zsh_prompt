@@ -12,4 +12,4 @@ GREEN="%{$fg[green]%}"
 PROMPT_START="$YELLOW/\A/ $LIGHT_GREEN/\u@\h$WHITE \W$LIGHT_GREEN/"
                
 
-PROMPT='${YELLOW}/%T/${GREEN} /%n@%M ${WHITE}%1~/$(git_super_status)${COLOR_NONE} \$ '
+PROMPT='${YELLOW}/%T/${GREEN} /%n@%M ${WHITE}%1~${GREEN}/$(git_super_status)${GREEN}\$ '
