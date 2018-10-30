@@ -1,0 +1,15 @@
+        RED="\[\033[00;31m\]"
+     YELLOW="%{$fg[yellow]%}"
+      GREEN="\[\033[01;32m\]"
+       BLUE="\e[0;31m"
+  LIGHT_RED="\[\033[01;31m\]"
+GREEN="%{$fg[green]%}"
+      WHITE="%{$fg[white]%}"
+ LIGHT_GRAY="\[\033[00;37m\]"
+ COLOR_NONE="%{$reset_color%}"
+
+. ~/.scripts/zsh-git-prompt/zshrc.sh
+PROMPT_START="$YELLOW/\A/ $LIGHT_GREEN/\u@\h$WHITE \W$LIGHT_GREEN/"
+               
+
+PROMPT='${YELLOW}/%T/${GREEN} /%n@%M ${WHITE}%1~/$(git_super_status)${COLOR_NONE} \$ '
