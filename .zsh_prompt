@@ -10,6 +10,20 @@ GREEN="%{$fg[green]%}"
 
 . ~/.scripts/zsh-git-prompt/zshrc.sh
 PROMPT_START="$YELLOW/\A/ $LIGHT_GREEN/\u@\h$WHITE \W$LIGHT_GREEN/"
-               
+
+# preexec () {
+#	if [ -d ".git" ]; then
+#		(nohup git fetch > /dev/null 2>&1 &)
+#	fi
+#
+#}
+
+gitfetch-accept-line () {
+	(nohup git fetch > /dev/null 2>&1 &)
+	zle accept-line
+}
+
+zle -N gitfetch-accept-line
+bindkey '^M' gitfetch-accept-line
 
 PROMPT='${YELLOW}/%T/${GREEN} /%n@%M ${WHITE}%1~${GREEN}/$(git_super_status)${GREEN}\$ '
