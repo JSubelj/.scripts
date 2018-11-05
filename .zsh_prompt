@@ -26,4 +26,7 @@ gitfetch-accept-line () {
 zle -N gitfetch-accept-line
 bindkey '^M' gitfetch-accept-line
 
+
 PROMPT='${YELLOW}/%T/${GREEN} /%n@%M ${WHITE}%1~${GREEN}/$(git_super_status)${GREEN}\$ '
+RPROMPT='[%F{yellow}%?%f]'
+

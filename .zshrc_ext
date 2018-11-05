@@ -6,5 +6,7 @@ source "$HOME/.scripts/.antigen/antigen.zsh"
 # neki !! se executa takoj
 setopt no_hist_verify
 
+# za šumnike
+export LANG=en_US.UTF-8
 
 #antigen apply
