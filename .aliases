@@ -16,6 +16,7 @@ alias ka="killall"
 alias g="git" 
 alias mkd="mkdir -pv" 
 alias ref="shortcuts.sh && source ~/.bashrc" # Refresh shortcuts manually and reload bashrc 
+alias setleds="~/.scripts/.logitech_g910_leds.sh"
  
 # Internet 
 alias ytd="youtube-dl --add-metadata -ic" # Download video link 
