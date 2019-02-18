@@ -15,13 +15,10 @@ alias sv="sudo vim"
 alias ka="killall" 
 alias g="git" 
 alias mkd="mkdir -pv" 
-alias ref="shortcuts.sh && source ~/.bashrc" # Refresh shortcuts manually and reload bashrc 
 alias setleds="~/.scripts/.logitech_g910_leds.sh"
 alias cpuinfo="cat /proc/cpuinfo"
 alias uniremote="/opt/urserver/urserver --daemon"
-alias sssh="konsoleprofile colors=GreenOnBlack; ssh"
 
- 
 # Internet 
 alias ytd="youtube-dl --add-metadata -ic" # Download video link 
 alias ytda="youtube-dl --add-metadata -xic" # Download only audio 
@@ -33,9 +30,4 @@ alias intellij="idea"
 alias mvnb="mvn -B archetype:generate -DarchetypeGroupId=org.apache.maven.archetypes"
 alias prog="cd /home/cleptes/Programming"
 alias py="python"
-alias prpod="cd /home/cleptes/Programming/Java/prpo"
 
-
-# Intercomputer chat
-alias chat='vim "+normal G$" +startinsert ~/Share/messages.txt'
-alias share='function __share(){ if [ -z $1 ]; then cd ~/Share/drop/; else cp $1 ~/Share/drop; echo "Share folder:" ;ll ~/Share/drop; fi };__share' 
