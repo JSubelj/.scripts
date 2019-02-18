@@ -4,7 +4,7 @@
 
 # aliases 
 alias dd='dd status=progress bs=10M' 
-alias ll="ls -la" 
+alias ll="ls -lsha" 
  
 # system
 alias progs="(pacman -Qet && pacman -Qm) | sort -u" # List programs I've installed 
@@ -16,6 +16,11 @@ alias ka="killall"
 alias g="git" 
 alias mkd="mkdir -pv" 
 alias ref="shortcuts.sh && source ~/.bashrc" # Refresh shortcuts manually and reload bashrc 
+alias setleds="~/.scripts/.logitech_g910_leds.sh"
+alias cpuinfo="cat /proc/cpuinfo"
+alias uniremote="/opt/urserver/urserver --daemon"
+alias sssh="konsoleprofile colors=GreenOnBlack; ssh"
+
  
 # Internet 
 alias ytd="youtube-dl --add-metadata -ic" # Download video link 
@@ -27,6 +32,9 @@ alias chrome="google-chrome-stable > /dev/null 2>&1 &"
 alias intellij="idea"
 alias mvnb="mvn -B archetype:generate -DarchetypeGroupId=org.apache.maven.archetypes"
 alias prog="cd /home/cleptes/Programming"
+alias py="python"
+alias prpod="cd /home/cleptes/Programming/Java/prpo"
+
 
 # Intercomputer chat
 alias chat='vim "+normal G$" +startinsert ~/Share/messages.txt'

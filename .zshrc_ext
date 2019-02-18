@@ -1,7 +1,12 @@
 . ~/.scripts/.aliases
+. ~/.scripts/.dockerbashfunctions
 . ~/.scripts/.zsh_prompt
+
 source "$HOME/.scripts/.antigen/antigen.zsh"
 #antigen theme https://github.com/denysdovhan/spaceship-prompt spaceship
+
+# Da so 777 direktoriji berljivi v terminalu
+export LS_COLORS="$LS_COLORS:ow=36;40";
 
 # neki !! se executa takoj
 setopt no_hist_verify

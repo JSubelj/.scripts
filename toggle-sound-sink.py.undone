@@ -1,0 +1,17 @@
+#!/usr/bin/env python
+
+import os
+import subprocess
+
+pacmd_text = subprocess.check_output(['pacmd',' list-sinks']).decode("utf-8").split("\n")
+
+#print(str(pacmd_text))
+for line in pacmd_text:
+	#print(line)
+	if "name:" in line:
+		print(line)
+
+
+
+
+

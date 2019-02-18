@@ -2,3 +2,5 @@ secrets
 .idea/
 .owncloud*
 ._sync_*
+sendmail.py
+
