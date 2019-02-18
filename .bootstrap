@@ -1,4 +1,0 @@
-cd ~/.scripts
-git pull origin master
-. ~/.scripts/.bashrc_ext
-cd ~/

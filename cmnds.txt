@@ -1,3 +1,0 @@
-xinput --set-prop "ELAN0501:00 04F3:3037 Touchpad" "libinput Accel Speed" 3
-xinput enable "AT Translated Set 2 keyboard"
-

@@ -1,9 +1,9 @@
 . ~/.scripts/.aliases
-. ~/.scripts/.dockerbashfunctions
+. ~/.scripts/.dockerzshfunctions
 . ~/.scripts/.zsh_prompt
 
-source "$HOME/.scripts/.antigen/antigen.zsh"
-#antigen theme https://github.com/denysdovhan/spaceship-prompt spaceship
+export PATH=$PATH:$HOME/.scripts/bin
+
 
 # Da so 777 direktoriji berljivi v terminalu
 export LS_COLORS="$LS_COLORS:ow=36;40";

@@ -18,6 +18,7 @@ alias mkd="mkdir -pv"
 alias setleds="~/.scripts/.logitech_g910_leds.sh"
 alias cpuinfo="cat /proc/cpuinfo"
 alias uniremote="/opt/urserver/urserver --daemon"
+alias cp="rsync -aP"
 
 # Internet 
 alias ytd="youtube-dl --add-metadata -ic" # Download video link 
