@@ -3,7 +3,7 @@
 #
 
 # aliases 
-alias dd='dd status=progress bs=10M' 
+alias dd='dd status=progress' 
 alias ll="ls -lsha" 
  
 # system
