@@ -4,6 +4,6 @@ clear
 konsoleprofile colors=GreenOnBlack
 eval ssh '$@'
 rc=$?
-clear
+#clear
 konsoleprofile colors=Maia
 exit "$rc"
