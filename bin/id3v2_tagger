@@ -5,22 +5,47 @@ import sys
 
 from os import listdir
 from os.path import isfile, join
+import re
+from parse import parse
+
+def get_anchors(txt: str):
+    return re.findall(r"\$[a-z]+", txt)
+
+if len(sys.argv) != 6:
+    print("Usage: id3v2_tagger folder_to_work artist album year path_style($title,$no)")
+    exit(1)
 
 folder_to_work = os.path.abspath(sys.argv[1])
+ARTIST = sys.argv[2]
+ALBUM = sys.argv[3]
+YEAR = sys.argv[4]
+PATH_STYLE = sys.argv[5]
 
-ALBUM = '500 classic rock songs 1'
-GENRE = '1'
 
 
+_anchors = ["$title", "$no"]
+
+path_style = PATH_STYLE
+anchors = get_anchors(PATH_STYLE)
+
+for anc in anchors:
+    path_style = path_style.replace(anc,"{}")
+print(path_style)
 
 print(folder_to_work)
 
 onlyfiles = [(f,join(folder_to_work, f)) for f in listdir(folder_to_work) if isfile(join(folder_to_work, f)) and f.endswith('.mp3')]
 
 for file_touple in onlyfiles:
-    file_name = file_touple[0].split('.mp3')[0]
+    file_name = file_touple[0]
     file_path = file_touple[1]
-    
+    parsed_name = list(parse(path_style,file_name))
+    no = parsed_name[anchors.index("$no")]
+    title = parsed_name[anchors.index("$title")]
+    print('id3v2 -A "'+ALBUM+'" -a "'+ARTIST+'" -t "'+title+'" -T '+no+' -y '+YEAR+' "'+file_path+'"')
+    os.system('id3v2 -A "'+ALBUM+'" -a "'+ARTIST+'" -t "'+title+'" -T '+no+' -y '+YEAR+' "'+file_path+'"')
+    os.system('id3v2 -l "'+file_path+'"')
+    '''
     track_number = str(int(file_name.split(' - ')[0]))
     artist = file_name.split(' - ')[1]
     track_name = file_name.split(' - ')[2]
@@ -31,3 +56,4 @@ for file_touple in onlyfiles:
     os.system('id3v2 -A "'+ALBUM+'" -a "'+artist+'" -t "'+track_name+'" -T '+track_number+' -g '+GENRE+' "'+file_path+'"')
     os.system('id3v2 -l "'+file_path+'"')
 
+    '''
