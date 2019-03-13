@@ -1,0 +1,39 @@
+#! /bin/bash
+
+# /home/cleptes/.scripts/bin/update-secure
+
+if [ "$EUID" -ne 0 ]
+  then echo "Please run as root"
+  exit
+fi
+
+echo "Starting system update"
+echo "Creating snapshot root"
+snapshot_description_pre="$(date +'%Y_%m_%d-%H.%M')_before_sysupdate"
+root_pre_num=$(snapper create --type pre --print-number --description "$snapshot_description_pre" --cleanup-algorithm number)
+echo "Pre snapshot number for root: $root_pre_num"
+echo "Creating snapshot home"
+date=$(date +'%Y_%m_%d-%H.%M')
+home_pre_num=$(snapper -c home create --type pre --print-number --description "$snapshot_description_pre" --cleanup-algorithm number)
+echo "Pre snapshot number for home: $home_pre_num"
+echo "Starting pacman -Syyu update"
+pacman -Syyu
+
+echo "Updated!"
+echo "Creating post snapshot root"
+snapshot_description_post="$(date +'%Y_%m_%d-%H.%M')_before_sysupdate"
+
+root_post_num=$(snapper create --type post --pre-number $root_pre_num --print-number --description "$snapshot_description_post" --cleanup-algorithm number)
+echo "Post snapshot number for root: $root_post_num"
+echo "Creating post snapshot home"
+home_post_num=$(snapper -c home create --type post --pre-number $home_pre_num --print-number --description "$snapshot_description_post" --cleanup-algorithm number)
+echo "Post snapshot number for root: $home_post_num"
+
+echo "$snapshot_description_pre and $snapshot_description_post:" >> /.snapshots_logs/root.log
+echo "$root_pre_num..$root_post_num" >> /.snapshots_logs/root.log
+echo "$snapshot_description_pre and $snapshot_description_post:" >> /.snapshots_logs/home.log
+echo "$home_pre_num..$home_post_num" >> /.snapshots_logs/home.log
+echo "Exiting"
+
+
+

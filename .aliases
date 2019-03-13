@@ -19,6 +19,11 @@ alias setleds="~/.scripts/.logitech_g910_leds.sh"
 alias cpuinfo="cat /proc/cpuinfo"
 alias uniremote="/opt/urserver/urserver --daemon"
 alias cp="rsync -aP"
+alias psyu="sudo update-secure"
+alias check="sudo check-update-diffs"
+alias revert="sudo revert-update"
+
+
 
 # Internet 
 alias ytd="youtube-dl --add-metadata -ic" # Download video link 
