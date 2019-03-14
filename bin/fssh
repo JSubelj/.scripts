@@ -1,8 +1,10 @@
 #!/bin/zsh
 
-clear
+#clear
 konsoleprofile colors=GreenOnBlack
-eval ssh '$@'
+ssh "$@"
+
+
 rc=$?
 #clear
 konsoleprofile colors=Maia

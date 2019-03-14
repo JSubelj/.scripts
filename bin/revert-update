@@ -1,0 +1,40 @@
+#! /bin/bash
+
+if [ "$EUID" -ne 0 ]
+  then echo "Please run as root"
+  exit
+fi
+
+root_or_home=0
+if [[ $1 == "" ]]; then
+	root_or_home=0
+elif [[ $1 == "home" ]]; then
+	root_or_home=1
+elif [[ $1 == "root" ]]; then
+	root_or_home=0
+else
+	exit
+fi
+
+if [[ $root_or_home == 0 ]]; then
+	echo "Are you shure you want to revert root? [Y/n]"
+	read conf
+	if [[ $conf == "" || $conf == "Y" || $conf == "y" ]]; then
+		echo "reverting root"
+		from_to=$(tail -n 1 /.snapshots_logs/root.log)
+		snapper undochange $from_to
+	else
+		echo "exiting"
+	fi
+
+else
+	echo "Are you shure you want to revert home? [Y/n]"
+	read conf
+	if [[ $conf == "" || $conf == "Y" || $conf == "y" ]]; then
+		echo "reverting home"
+		from_to=$(tail -n 1 /.snapshots_logs/home.log)
+		snapper -c home undochange $from_to
+	else
+		echo "exiting"
+	fi
+fi

@@ -1,0 +1,27 @@
+#! /bin/bash
+
+if [ "$EUID" -ne 0 ]
+  then echo "Please run as root"
+  exit
+fi
+
+root_or_home=0
+if [[ $1 == "" ]]; then
+	root_or_home=0
+elif [[ $1 == "home" ]]; then
+	root_or_home=1
+elif [[ $1 == "root" ]]; then
+	root_or_home=0
+else
+	exit
+fi
+
+if [[ $root_or_home == 0 ]]; then
+	echo "Checking status for root"
+	from_to=$(tail -n 1 /.snapshots_logs/root.log)
+	sudo snapper status $from_to
+else
+	echo "Checking status for home"
+	from_to=$(tail -n 1 /.snapshots_logs/home.log)
+	sudo snapper -c home status $from_to
+fi
