@@ -31,4 +31,4 @@ alias intellij="idea"
 alias mvnb="mvn -B archetype:generate -DarchetypeGroupId=org.apache.maven.archetypes"
 alias prog="cd /home/cleptes/Programming"
 alias py="python"
-
+alias netbeans="/usr/bin/netbeans"
