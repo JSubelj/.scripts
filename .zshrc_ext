@@ -2,7 +2,7 @@
 . ~/.scripts/.dockerzshfunctions
 . ~/.scripts/.zsh_prompt
 
-export PATH=$PATH:$HOME/.scripts/bin
+export PATH=$PATH:$HOME/.scripts/bin:$HOME/.scripts/bin/btrfs-tools
 
 
 # Da so 777 direktoriji berljivi v terminalu
