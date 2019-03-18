@@ -27,9 +27,12 @@ _anchors = ["$title", "$no"]
 
 path_style = PATH_STYLE
 anchors = get_anchors(PATH_STYLE)
-
+print(path_style)
 for anc in anchors:
+    print(anc)
+    
     path_style = path_style.replace(anc,"{}")
+    print(path_style)
 print(path_style)
 
 print(folder_to_work)
@@ -39,6 +42,8 @@ onlyfiles = [(f,join(folder_to_work, f)) for f in listdir(folder_to_work) if isf
 for file_touple in onlyfiles:
     file_name = file_touple[0]
     file_path = file_touple[1]
+    print(file_name, file_path)
+    print(path_style)
     parsed_name = list(parse(path_style,file_name))
     no = parsed_name[anchors.index("$no")]
     title = parsed_name[anchors.index("$title")]

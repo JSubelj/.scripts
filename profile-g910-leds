@@ -1,0 +1,13 @@
+# Sample profile by groups keys
+
+a 303030
+g keys 00ff00
+g numeric 00ffff
+g functions ffffff
+g fkeys 0098f0
+g modifiers ff0000
+g arrows ffff00
+fx cycle logo 20
+g gkeys ffffff
+
+c # Commit changes
