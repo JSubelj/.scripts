@@ -1,0 +1,19 @@
+#! /bin/bash
+
+# /home/cleptes/.scripts/bin/revert-point
+
+if [ "$EUID" -ne 0 ]
+  then echo "Please run as root"
+  exit
+fi
+
+if [[ $1 == "" ]]; then
+    echo "Comment of snapshot is needed! Exiting!"
+    exit 0
+fi
+
+echo "Creating snapshot with comment $1"
+
+snap_num=$(snapper create --type single --print-number --description "$1" --cleanup-algorithm number)
+echo "Created snapshot with snap number: $snap_num"
+
