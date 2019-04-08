@@ -22,7 +22,7 @@ alias cp="rsync -aP"
 alias psyu="sudo update-secure"
 alias check="sudo check-update-diffs"
 alias revert="sudo revert-update"
-
+alias dc="docker-compose"
 
 
 # Internet 
