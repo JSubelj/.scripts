@@ -67,7 +67,10 @@ plugins=(
 
 )
 
-plugins+=(flatpak)
+
+if [[ "$(cat /etc/hostname)" == "cleptes-laptop" ]]; then
+    plugins+=(flatpak)
+fi
 
 source $ZSH/oh-my-zsh.sh
 
