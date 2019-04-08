@@ -7,5 +7,5 @@ ssh "$@"
 
 rc=$?
 #clear
-konsoleprofile colors=Maia
+konsoleprofile colors=Breeze
 exit "$rc"
