@@ -1,8 +1,16 @@
 . ~/.scripts/.aliases
 . ~/.scripts/.dockerzshfunctions
 . ~/.scripts/.zsh_prompt
+#. ~/.scripts/.flatpak_aliases
 
 export PATH=$PATH:$HOME/.scripts/bin:$HOME/.scripts/bin/btrfs-tools
+
+if [[ "$(cat /etc/hostname)" == "cleptes-laptop" ]]; then
+    export PATH=$PATH:$HOME/.scripts/bin/flatpak-wrappers
+fi
+
+
+
 
 
 # Da so 777 direktoriji berljivi v terminalu
