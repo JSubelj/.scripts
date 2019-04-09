@@ -8,7 +8,7 @@ GREEN="%{$fg[green]%}"
  LIGHT_GRAY="\[\033[00;37m\]"
  COLOR_NONE="%{$reset_color%}"
 
-. ~/.scripts/zsh-git-prompt/zshrc.sh
+#. ~/.scripts/zsh-git-prompt/zshrc.sh
 PROMPT_START="$YELLOW/\A/ $LIGHT_GREEN/\u@\h$WHITE \W$LIGHT_GREEN/"
 
 # preexec () {
@@ -23,10 +23,10 @@ gitfetch-accept-line () {
 	zle accept-line
 }
 
-zle -N gitfetch-accept-line
-bindkey '^M' gitfetch-accept-line
+#zle -N gitfetch-accept-line
+#bindkey '^M' gitfetch-accept-line
 
 
-PROMPT='${YELLOW}/%T/${GREEN} /%n@%M ${WHITE}%1~${GREEN}/$(git_super_status)${GREEN}\$ '
-RPROMPT='[%F{yellow}%?%f]'
+#PROMPT='${YELLOW}/%T/${GREEN} /%n@%M ${WHITE}%1~${GREEN}/$(git_super_status)${GREEN}\$ '
+#RPROMPT='[%F{yellow}%?%f]'
 
