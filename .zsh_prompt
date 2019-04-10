@@ -8,9 +8,11 @@ GREEN="%{$fg[green]%}"
  LIGHT_GRAY="\[\033[00;37m\]"
  COLOR_NONE="%{$reset_color%}"
 
-. ~/.scripts/zsh-git-prompt/zshrc.sh
+
 PROMPT_START="$YELLOW/\A/ $LIGHT_GREEN/\u@\h$WHITE \W$LIGHT_GREEN/"
 
+GIT_PROMPT_EXECUTABLE="haskell"
+. ~/.scripts/zsh-git-prompt/zshrc.sh
 # preexec () {
 #	if [ -d ".git" ]; then
 #		(nohup git fetch > /dev/null 2>&1 &)

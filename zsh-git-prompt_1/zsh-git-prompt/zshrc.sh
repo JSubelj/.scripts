@@ -43,14 +43,14 @@ function chpwd_update_git_vars() {
 function update_current_git_vars() {
     unset __CURRENT_GIT_STATUS
 
-    if [[ "$GIT_PROMPT_EXECUTABLE" == "python" ]]; then
-        local gitstatus="$__GIT_PROMPT_DIR/gitstatus.py"
+    local gitstatus="$__GIT_PROMPT_DIR/gitstatus.py"
+    if [ -d ".git" ]; then
         _GIT_STATUS=`python ${gitstatus} 2>/dev/null`
+    else
+        _GIT_STATUS=""    
     fi
-    if [[ "$GIT_PROMPT_EXECUTABLE" == "haskell" ]]; then
-        _GIT_STATUS=`git status --porcelain --branch &> /dev/null | $__GIT_PROMPT_DIR/src/.bin/gitstatus`
-    fi
-     __CURRENT_GIT_STATUS=("${(@s: :)_GIT_STATUS}")
+    
+    __CURRENT_GIT_STATUS=("${(@s: :)_GIT_STATUS}")
 	GIT_BRANCH=$__CURRENT_GIT_STATUS[1]
 	GIT_AHEAD=$__CURRENT_GIT_STATUS[2]
 	GIT_BEHIND=$__CURRENT_GIT_STATUS[3]
@@ -62,7 +62,6 @@ function update_current_git_vars() {
 
 
 git_super_status() {
-	precmd_update_git_vars
     if [ -n "$__CURRENT_GIT_STATUS" ]; then
 	  STATUS="$ZSH_THEME_GIT_PROMPT_PREFIX$ZSH_THEME_GIT_PROMPT_BRANCH$GIT_BRANCH%{${reset_color}%}"
 	  if [ "$GIT_BEHIND" -ne "0" ]; then
@@ -82,7 +81,7 @@ git_super_status() {
 		  STATUS="$STATUS$ZSH_THEME_GIT_PROMPT_CHANGED$GIT_CHANGED%{${reset_color}%}"
 	  fi
 	  if [ "$GIT_UNTRACKED" -ne "0" ]; then
-		  STATUS="$STATUS$ZSH_THEME_GIT_PROMPT_UNTRACKED%{${reset_color}%}"
+		  STATUS="$STATUS$ZSH_THEME_GIT_PROMPT_UNTRACKED$GIT_UNTRACKED%{${reset_color}%}"
 	  fi
 	  if [ "$GIT_CHANGED" -eq "0" ] && [ "$GIT_CONFLICTS" -eq "0" ] && [ "$GIT_STAGED" -eq "0" ] && [ "$GIT_UNTRACKED" -eq "0" ]; then
 		  STATUS="$STATUS$ZSH_THEME_GIT_PROMPT_CLEAN"
@@ -93,9 +92,10 @@ git_super_status() {
 }
 
 # Default values for the appearance of the prompt. Configure at will.
-ZSH_THEME_GIT_PROMPT_PREFIX="("
-ZSH_THEME_GIT_PROMPT_SUFFIX=")"
-ZSH_THEME_GIT_PROMPT_SEPARATOR="|"
+export ZSH_THEME_GIT_PROMPT_GENERAL="%{$FG[007]%}"
+ZSH_THEME_GIT_PROMPT_PREFIX="$ZSH_THEME_GIT_PROMPT_GENERAL ["
+ZSH_THEME_GIT_PROMPT_SUFFIX="$ZSH_THEME_GIT_PROMPT_GENERAL]"
+ZSH_THEME_GIT_PROMPT_SEPARATOR="$ZSH_THEME_GIT_PROMPT_GENERAL|"
 ZSH_THEME_GIT_PROMPT_BRANCH="%{$fg_bold[magenta]%}"
 ZSH_THEME_GIT_PROMPT_STAGED="%{$fg[red]%}%{●%G%}"
 ZSH_THEME_GIT_PROMPT_CONFLICTS="%{$fg[red]%}%{✖%G%}"

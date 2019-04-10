@@ -1,10 +1,10 @@
+# THIS IS NOT MINE ORIGINAL REPO: https://github.com/olivierverdier/zsh-git-prompt
+
 # Informative git prompt for zsh
 
-[![Build Status](https://travis-ci.org/olivierverdier/zsh-git-prompt.svg)](https://travis-ci.org/olivierverdier/zsh-git-prompt)
+[![Build Status](https://travis-ci.org/tombh/zsh-git-prompt.svg)](https://travis-ci.org/tombh/zsh-git-prompt)
 
 A `zsh` prompt that displays information about the current git repository. In particular the branch name, difference with remote branch, number of files staged, changed, etc.
-
-(an original idea from this [blog post][]).
 
 ## Examples
 
@@ -70,22 +70,12 @@ When the branch name starts with a colon `:`, it means it’s actually a hash, n
     ```
 3.  Go in a git repository and test it!
 
-### Haskell (optional)
-
-There is now a Haskell implementation as well, which can be four to six times faster than the Python one. The reason is not that Haskell is faster in itself (although it is), but that this implementation calls `git` only once. To install, do the following:
-
-1.  Make sure [Haskell's stack](http://docs.haskellstack.org/en/stable/README.html#how-to-install) is installed on your system
-2.  `cd` to this folder
-2.  Run `stack setup` to install the Haskell compiler, if it is not already there
-3.  Run `stack build && stack install` (don't worry, the executable is only “installed” in this folder, not on your system)
-4.  Define the variable `GIT_PROMPT_EXECUTABLE="haskell"` somewhere in
-    your `.zshrc`
-
 ## Customisation
 
 - You may redefine the function `git_super_status` (after the `source` statement) to adapt it to your needs (to change the order in which the information is displayed).
 - Define the variable `ZSH_THEME_GIT_PROMPT_CACHE` in order to enable caching.
 - You may also change a number of variables (which name start with `ZSH_THEME_GIT_PROMPT_`) to change the appearance of the prompt.  Take a look in the file `zshrc.sh` to see how the function `git_super_status` is defined, and what variables are available.
+- You may change the value of `ZSH_THEME_GIT_PROMPT_GENERAL` variable to color `(`, `)`, and `|`. Also, use this variable to use the same color for other parts of PROMPT and git status part.
 
 **Enjoy!**
 
