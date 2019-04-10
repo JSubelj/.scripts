@@ -1,3 +1,5 @@
+# THIS IS NOT MINE ORIGINAL REPO: https://github.com/olivierverdier/zsh-git-prompt
+
 # Informative git prompt for zsh
 
 [![Build Status](https://travis-ci.org/tombh/zsh-git-prompt.svg)](https://travis-ci.org/tombh/zsh-git-prompt)
