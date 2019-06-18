@@ -11,6 +11,8 @@ export LS_COLORS="$LS_COLORS:ow=36;40";
 # neki !! se executa takoj
 setopt no_hist_verify
 
+export WINEARCH="win64"
+
 # za šumnike
 export LANG="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"
