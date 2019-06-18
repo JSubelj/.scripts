@@ -23,7 +23,7 @@ alias psyu="sudo update-secure"
 alias check="sudo check-update-diffs"
 alias revert="sudo revert-update"
 alias dc="docker-compose"
-
+alias speedtest="curl -s https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py | python - | grep -E \"(Upload|Download|ms)\""
 
 # Internet 
 alias ytd="youtube-dl --add-metadata -ic" # Download video link 
@@ -38,4 +38,5 @@ alias prog="cd /home/cleptes/Programming"
 alias py="python3"
 alias python="python3"
 alias netbeans="/usr/bin/netbeans"
-alias matlab="/home/matlab_install/bin/matlab&"
+alias matlab="/home/matlab/bin/matlab&"
+
